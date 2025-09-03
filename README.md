@@ -8,6 +8,7 @@ ECCFP utilizes all consecutive full passes to determine accurate eccDNA position
 #### Reference
 ECCFP is optimized from the [Flec](https://github.com/icebert/eccDNA_RCA_nanopore.git) software.
 - [eccDNA_RCA_nanopore](https://github.com/icebert/eccDNA_RCA_nanopore.git)
+- [minimap2](https://github.com/lh3/minimap2/)
 #### Dependency (python packages)
 - [numpy](https://numpy.org/)
 - [pandas](https://pandas.pydata.org/)
@@ -18,7 +19,12 @@ ECCFP is optimized from the [Flec](https://github.com/icebert/eccDNA_RCA_nanopor
 ```
 git clone https://github.com/WSG-Lab/ECCFP.git
 cd ECCFP
-pip install .
+conda env create --file environment.yml -y
+conda activate ECCFP
+pip install -e .
+
+# Verify installation and display help message
+eccfp --help
 ```
 ## Usage
 #### simple usage

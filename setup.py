@@ -1,14 +1,24 @@
 from setuptools import setup
 
+install_requires = [
+    "biopython==1.85",
+    "numpy==1.26.4",
+    "pandas==2.3.2",
+    "pyfaidx==0.9.0.1",
+    "pyfastx==2.2.0",
+    "rich==14.1.0",
+]
+
 setup(
     name='eccfp',
     version='1.0.0',
-    packages=['ECCFP', 'ECCFP.cli'],
+    packages=find_packages(),
     url='',
     license='',
     author='Li Wang, Zhang Tangxuan',
     author_email='',
     description='',
+install_requires=install_requires,
 entry_points={
         "console_scripts": [
             "eccfp=ECCFP.main:main",

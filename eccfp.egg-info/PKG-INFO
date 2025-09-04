@@ -1,7 +1,9 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: eccfp
 Version: 1.0.0
 Home-page: 
 Author: Li Wang, Zhang Tangxuan
 Author-email: 
 License-File: LICENSE
+Dynamic: author
+Dynamic: license-file

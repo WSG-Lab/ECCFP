@@ -84,7 +84,7 @@ def main():
         os.makedirs(args.output, exist_ok=True)
 
     outUnit = f'{args.output}/unit.txt'
-    outLoc = f'{args.output}/candidate_consolidate.txt'
+    outLoc = f'{args.output}/candidate_consolidated.txt'
     outInfo = f'{args.output}/final_eccDNA.txt'
     outSeq = f'{args.output}/consensus_sequence.fasta'
     outVar = f'{args.output}/variants.txt'

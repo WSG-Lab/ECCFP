@@ -19,6 +19,7 @@ class Fragment(object):
         self.cigar = cigar
         self.name = readname
         self.readUnit = readUnit
+        self.isGhost = False
 
 class FragmentGroup(object):
     def __init__(self, read='', seqname=''):
@@ -251,7 +252,8 @@ class FragmentGroup(object):
             n += 1
             for fragment in group:
                 unit = f'{unit}{read.name}\t{self.passes}\t{n}\t{fragment.start + 1}\t{fragment.end + 1}\t' \
-                       f'{fragment.interval.chr}\t{fragment.interval.start + 1}\t{fragment.interval.end + 1}\t{fragment.interval.strand}\t{frags}\t{fragment.cigar}\n'
+                       f'{fragment.interval.chr}\t{fragment.interval.start + 1}\t{fragment.interval.end + 1}\t' \
+                        f'{fragment.interval.strand}\t{frags}\t{fragment.cigar}\t{fragment.isGhost}\n'
         return unit
 
 class Read(object):
@@ -517,6 +519,11 @@ class Read(object):
                 tmp.append(fraggroup)
         return self.consolidate_candidate_groups(tmp)
 
+    def FragmentIsGhost(self, i):
+        for j in range(i, len(self.fragments)):
+            self.fragments[j].isGhost = True
+        return True
+
     def bootstrap(self):
         if len(self.fragments) < 3:
             return None
@@ -531,8 +538,11 @@ class Read(object):
         fraggroup = FragmentGroup()
         circle = []
         lastFrag = self.fragments[0]
+        isGhost = False
         for i in range(1, len(self.fragments) - 1):
             if self.fragments[i].mapQual < self.minMapQual:
+                if not isGhost:
+                    isGhost = self.FragmentIsGhost(i)
                 continue
             if self.fragments[i].start - lastFrag.end > args.maxOffset and len(fraggroup.group) != 0:
                 res = False
@@ -540,6 +550,8 @@ class Read(object):
                 res = fraggroup.add(self.fragments[i])
             if res == False:
                 if len(fraggroup.group) != 0:
+                    if not isGhost:
+                        isGhost = self.FragmentIsGhost(i)
                     circle.append(fraggroup)
                     fraggroup = FragmentGroup()
                     _ = fraggroup.add(self.fragments[i])

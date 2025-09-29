@@ -13,4 +13,5 @@ eccfp.egg-info/PKG-INFO
 eccfp.egg-info/SOURCES.txt
 eccfp.egg-info/dependency_links.txt
 eccfp.egg-info/entry_points.txt
+eccfp.egg-info/requires.txt
 eccfp.egg-info/top_level.txt

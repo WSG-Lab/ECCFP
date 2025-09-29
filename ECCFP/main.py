@@ -89,7 +89,7 @@ def main():
     outSeq = f'{args.output}/consensus_sequence.fasta'
     outVar = f'{args.output}/variants.txt'
     with open(outUnit, 'w') as u:
-        u.write('reads\tNfullpass\tfragments\tread_start\tread_end\tchr\tstart\tend\tstrand\tcandidate_eccDNA\tcigar\n')
+        u.write('reads\tNfullpass\tfragments\tread_start\tread_end\tchr\tstart\tend\tstrand\tcandidate_eccDNA\tcigar\tisGhost\n')
         for read in PAF(args.paf).reads():
             allcircle = read.bootstrap()
             if allcircle:

@@ -20,6 +20,7 @@ class Fragment(object):
         self.name = readname
         self.readUnit = readUnit
         self.isGhost = False
+        self.number = 0
 
 class FragmentGroup(object):
     def __init__(self, read='', seqname=''):
@@ -253,7 +254,7 @@ class FragmentGroup(object):
             for fragment in group:
                 unit = f'{unit}{read.name}\t{self.passes}\t{n}\t{fragment.start + 1}\t{fragment.end + 1}\t' \
                        f'{fragment.interval.chr}\t{fragment.interval.start + 1}\t{fragment.interval.end + 1}\t' \
-                        f'{fragment.interval.strand}\t{frags}\t{fragment.cigar}\t{fragment.isGhost}\n'
+                        f'{fragment.interval.strand}\t{frags}\t{fragment.isGhost}\t{fragment.number}\t{fragment.cigar}\n'
         return unit
 
 class Read(object):
@@ -282,7 +283,11 @@ class Read(object):
         Trims the overlapping parts of fragments.
         '''
         self.ordered()
+        n = 0
+        self.fragments[-1].number = len(self.fragments)
         for i in range(len(self.fragments) - 1):
+            n += 1
+            self.fragments[i].number = n
             dislen = self.fragments[i + 1].start - self.fragments[i].end - 1
             if dislen > 0:
                 continue
@@ -533,7 +538,7 @@ class Read(object):
             while not res:
                 n += 1
                 res = self.remove_contained_fragments()
-                if n > 2:
+                if (n > 2) or (len(self.fragments) < 3):
                     return None
         fraggroup = FragmentGroup()
         circle = []

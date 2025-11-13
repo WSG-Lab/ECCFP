@@ -73,13 +73,13 @@ class FragmentGroup(object):
         n = 0
         for frag in self.group:
             if frag[0].interval.chr == interval.chr:
-                if abs(frag[-1].end - fragment.start) > args.maxOffset:
+                if abs(frag[-1].end - fragment.start) > 1:
                     n += 1
                 if interval.start <= frag[0].interval.end and interval.end >= frag[0].interval.start and \
                         interval.strand == frag[0].interval.strand:
                     return False
             else:
-                if abs(frag[-1].end - fragment.start) > args.maxOffset:
+                if abs(frag[-1].end - fragment.start) > 1:
                     n += 1
         if n == len(self.group):
             return False

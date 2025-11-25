@@ -131,7 +131,7 @@ class MultiCircle(object):
 
     def printfRaw(self):
         for circle in self.raw:
-            yield f'{circle}\t{self.length}'
+            yield f'{circle},{self.length}'
 
     def getConsensus(self):
         sequence = []
@@ -454,7 +454,7 @@ class SplitRegion(object):
         unique_reads = len(np.unique(reads))
         count = circSite.count("|") + 1
         self.printfInfo.append(
-            f"{circSite}\t{cov}\t{count}\t{unique_reads}\t{length}\t{seqLength}"
+            f"{circSite},{cov},{count},{unique_reads},{length},{seqLength}"
         )
 
     def _process_consolidate_single_candidate(self, group, circ_info):
@@ -465,15 +465,15 @@ class SplitRegion(object):
             reads.extend(circ.readname)
             cov += circ.coverage
             rawSite, rawLen, _ = circ.printf()
-            yield f"{circSite}\t{length}\tTrue\t{rawSite}\t{rawLen}\t{circ.coverage}\n"
+            yield f"{circSite},{length},True,{rawSite},{rawLen},{circ.coverage}\n"
         self._append_printf_info(circSite, cov, reads, length, seqLength)
 
     def _process_non_consolidate_single(self, circs):
         for circ in circs:
             circSite, length, seqLength = self._process_single_circ(circ)
             self._append_printf_info(circSite, circ.coverage, circ.readname, length, seqLength)
-            tmp = f"{circSite}\t{length}"
-            yield f"{tmp}\tFalse\t{tmp}\t{circ.coverage}\n"
+            tmp = f"{circSite},{length}"
+            yield f"{tmp},False,{tmp},{circ.coverage}\n"
 
     def _process_consolidate_multi_candidate(self, group, circ_info):
         circSite, length, seqLength = circ_info
@@ -483,7 +483,7 @@ class SplitRegion(object):
             reads.extend(r for sublist in circ.readname for r in sublist)
             cov += circ.coverage
             for n, line in enumerate(circ.printfRaw()):
-                yield f"{circSite}\t{length}\tTrue\t{line}\t{circ.rawCoverage[n]}\n"
+                yield f"{circSite},{length},True,{line},{circ.rawCoverage[n]}\n"
         self._append_printf_info(circSite, cov, reads, length, seqLength)
 
     def _process_non_consolidate_multi(self, circs):
@@ -494,7 +494,7 @@ class SplitRegion(object):
                 circSite, length, seqLength = circ_info
                 self._append_printf_info(circSite, tmpCirc.coverage, tmpCirc.readname, length, seqLength)
                 line = next(tmpCirc.printfRaw())
-                yield f"{circSite}\t{length}\tFalse\t{line}\t{tmpCirc.rawCoverage[0]}\n"
+                yield f"{circSite},{length},False,{line},{tmpCirc.rawCoverage[0]}\n"
 
     def _construct_tmp_circ(self, circ, i, raw):
         tmpCirc = MultiCircle()
@@ -532,5 +532,5 @@ class SplitRegion(object):
                 var.ref = str(Bio.Seq.Seq(var.ref).reverse_complement())
                 var.alt = str(Bio.Seq.Seq(var.alt).reverse_complement())
             var = var.varType()
-            yield '\t'.join([var.chr, str(var.pos), var.ref, var.alt, \
+            yield ','.join([var.chr, str(var.pos), var.ref, var.alt, \
                              str(var.count), str(var.depth), var.type, var.site]) + '\n'

@@ -110,5 +110,8 @@ Five files are generated following the completion of the pipeline: unit.txt and 
 |col8|eccDNApos|
 
 ## Citation
-> Wang Li, Biyuan Miao, Jun Zhang, Qingsong Zeng, Tangxuan Zhang, Zetong Wu, Yusheng Song, et al. 2026. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification from long-read sequencing data. iMetaOmics 2: e70080. https://doi.org/10.1002/imo2.70080
-> Zhang, T. et al. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification using Nanopore sequencing data. bioRxiv 2025.05.13.653627 (2025) doi:10.1101/2025.05.13.653627.
+- **Primary publication (iMetaOmics, 2026):** 
+> Wang Li, Biyuan Miao, Jun Zhang, Qingsong Zeng, Tangxuan Zhang, Zetong Wu, Yusheng Song, et al. 2026. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification from long-read sequencing data. *iMetaOmics* 2: e70080. https://doi.org/10.1002/imo2.70080
+
+- **Preprint (bioRxiv, 2025):** 
+> Zhang, T. et al. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification using Nanopore sequencing data. *bioRxiv* 2025.05.13.653627 (2025) doi:10.1101/2025.05.13.653627. https://www.biorxiv.org/content/10.1101/2025.05.13.653627v1

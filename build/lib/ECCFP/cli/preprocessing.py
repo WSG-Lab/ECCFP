@@ -252,9 +252,9 @@ class FragmentGroup(object):
         for group in self.group:
             n += 1
             for fragment in group:
-                unit = f'{unit}{read.name}\t{self.passes}\t{n}\t{fragment.start + 1}\t{fragment.end + 1}\t' \
-                       f'{fragment.interval.chr}\t{fragment.interval.start + 1}\t{fragment.interval.end + 1}\t' \
-                        f'{fragment.interval.strand}\t{frags}\t{fragment.isGhost}\t{fragment.number}\t{fragment.cigar}\n'
+                unit = f'{unit}{read.name},{self.passes},{n},{fragment.start + 1},{fragment.end + 1},' \
+                       f'{fragment.interval.chr},{fragment.interval.start + 1},{fragment.interval.end + 1},' \
+                        f'{fragment.interval.strand},{frags},{fragment.isGhost},{fragment.number},{fragment.cigar}\n'
         return unit
 
 class Read(object):

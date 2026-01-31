@@ -3,7 +3,7 @@ from ECCFP.cli.accurate_eccDNA import *
 from ECCFP.cli.preprocessing import PAF
 
 def printf(unitPath, outLoc, outInfo, outSeq, outVar):
-    a = pd.read_table(unitPath)
+    a = pd.read_csv(unitPath)
     Nfullpass = a.Nfullpass.values
     idx = np.where(Nfullpass >= args.nf)
     Nfragment = a.fragments.values[idx]
@@ -19,8 +19,8 @@ def printf(unitPath, outLoc, outInfo, outSeq, outVar):
     read_start = a.read_start.values[idx]
     read_end = a.read_end.values[idx]
     with open(outLoc, 'w') as loc, open(outInfo, 'w') as out, open(outSeq, 'w') as fa, open(outVar, 'w') as var:
-        loc.write(f'eccDNApos\teccDNA_len\tconsolidating\tcand_eccDNA\tcand_len\tcand_Nfullpass\n')
-        out.write(f'eccDNApos\tNfullpass\tNfragments\tNreads\trefLength\tseqLength\n')
+        loc.write(f'eccDNApos,eccDNA_len,consolidating,cand_eccDNA,cand_len,cand_Nfullpass\n')
+        out.write(f'eccDNApos,Nfullpass,Nfragments,Nreads,refLength,seqLength\n')
         condation = np.char.find(eccDNA, '|') == -1
         idx = np.where(condation)
         frag = eccDNA[idx]
@@ -83,13 +83,13 @@ def main():
     if not os.path.exists(args.output) and args.output != '.':
         os.makedirs(args.output, exist_ok=True)
 
-    outUnit = f'{args.output}/unit.txt'
-    outLoc = f'{args.output}/candidate_consolidated.txt'
-    outInfo = f'{args.output}/final_eccDNA.txt'
+    outUnit = f'{args.output}/unit.csv'
+    outLoc = f'{args.output}/candidate_consolidated.csv'
+    outInfo = f'{args.output}/final_eccDNA.csv'
     outSeq = f'{args.output}/consensus_sequence.fasta'
-    outVar = f'{args.output}/variants.txt'
+    outVar = f'{args.output}/variants.csv'
     with open(outUnit, 'w') as u:
-        u.write('reads\tNfullpass\tfragments\tread_start\tread_end\tchr\tstart\tend\tstrand\tcandidate_eccDNA\tisGhost\torder\tcigar\n')
+        u.write('reads,Nfullpass,fragments,read_start,read_end,chr,start,end,strand,candidate_eccDNA,isGhost,order,cigar\n')
         for read in PAF(args.paf).reads():
             allcircle = read.bootstrap()
             if allcircle:

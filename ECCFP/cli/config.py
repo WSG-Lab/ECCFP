@@ -1,8 +1,11 @@
 import pyfaidx
 import pyfastx
 import argparse
+from .. import __version__
 
 parser = argparse.ArgumentParser()
+
+parser.add_argument('-v', '--version', action='version', version=f'%(prog)s {__version__}' )
 
 identity_group = parser.add_argument_group(description='Generate candidate eccDNA from rolling circle reads:')
 identity_group.add_argument("--fastq", type=str, required=True, help='input reads in fastq format')
@@ -30,6 +33,8 @@ consensus_group = parser.add_argument_group(description='Generate consensus sequ
 consensus_group.add_argument('--minDP', type=int, default=4, help='minimum depth to call variants, default is 4')
 consensus_group.add_argument('--minAF', type=float, default=0.75,
                              help='minimum alternative allele frequency to call variants, default is 0.75')
+
+
 
 args = parser.parse_args()
 

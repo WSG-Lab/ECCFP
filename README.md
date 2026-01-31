@@ -1,7 +1,8 @@
 # ECCFP - EccDNA Caller based on Consecutive Full Pass
 A software package for identifying eccDNAs in the ONT sequencing data of RCA-amplified eccDNA
 ## Introduction
-ECCFP utilizes all consecutive full passes to determine accurate eccDNA positions and generate consensus sequences, based on rolling circle amplification and nanopore sequencing.  
+ECCFP utilizes all consecutive full passes to determine accurate eccDNA positions and generate consensus sequences, based on rolling circle amplification and nanopore sequencing.
+[![ECCFP: ImetaOmics](https://img.shields.io/badge/DOI-10.1002/imo2.70080-blue)](https://doi.org/10.1002/imo2.70080)
 [![ECCFP: BioRxiv](https://img.shields.io/badge/DOI-10.1101/2025.05.13.653627-blue)](https://doi.org/10.1101/2025.05.13.653627)  
 |![ECCFP](./images/ECCFP%20Figure%201.png)|
 |:---------------------------------------:|
@@ -109,4 +110,5 @@ Five files are generated following the completion of the pipeline: unit.txt and 
 |col8|eccDNApos|
 
 ## Citation
+> Wang Li, Biyuan Miao, Jun Zhang, Qingsong Zeng, Tangxuan Zhang, Zetong Wu, Yusheng Song, et al. 2026. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification from long-read sequencing data. iMetaOmics 2: e70080. https://doi.org/10.1002/imo2.70080
 > Zhang, T. et al. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification using Nanopore sequencing data. bioRxiv 2025.05.13.653627 (2025) doi:10.1101/2025.05.13.653627.

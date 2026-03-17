@@ -17,6 +17,12 @@ ECCFP is optimized from the [Flec](https://github.com/icebert/eccDNA_RCA_nanopor
 - [pyfastx](https://pypi.org/project/pyfastx/)
 - [Biopython](https://biopython.org)
 ## Installation
+<style>
+pre {
+   max-width: 800px;
+   overflow-x: auto;
+}
+</style>
 ```
 git clone https://github.com/WSG-Lab/ECCFP.git
 cd ECCFP
@@ -74,7 +80,7 @@ eccfp --fastq example.fastq --paf mapping.paf --reference ref.fa -o output
 ```
 ## Output
 Five files are generated following the completion of the pipeline: unit.txt and candidate_consolidated.txt(intermediate files), final_eccDNA.txt, consensus_sequence.fasta, and variant.txt (result files).   
-|file|details|
+|<div style="width: 150pt">file|<div style="width: 300pt">details|
 |----|-------|  
 |unit.txt|full pass alignment details for all candidate eccDNAs detected in reads|
 |candidate_consolidated.txt|the consolidating steps used to derive accurate eccDNAs from the candidate eccDNAs|
@@ -88,7 +94,7 @@ Five files are generated following the completion of the pipeline: unit.txt and 
 |chr16:757924-758274(+)|4|1|1|351|350|
 |chr1:21828265-21828439(+)\|chr7:132167689-132167880(+)|24|2|2|367|367|
 
-||description|
+|<div style="width: 150pt">|<div style="width: 300pt">description|
 |---------|---------------|
 |eccDNApos|eccDNA position|
 |Nfullpass|Number of consecutive full pass for this eccDNA covered by all reads|
@@ -98,7 +104,7 @@ Five files are generated following the completion of the pipeline: unit.txt and 
 |seqLength|The length of consensus sequence that this eccDNA |
 
 ###### variants.txt file
-||description|
+|<div style="width: 150pt">|<div style="width: 300pt">description|
 |-------|-------|
 |col1|chromsome|
 |col2|position in the reference genome|
@@ -113,5 +119,3 @@ Five files are generated following the completion of the pipeline: unit.txt and 
 - **Primary publication (iMetaOmics, 2026):** 
 > Li, W., Miao, B., Zhang, J., Zeng, Q., Zhang, T., Wu, Z., Song, Y., Li, M., Guo, L., Luo, J., Xu, J., Liu, T., Chen, S., Gu, J. and Wan, S. (2026), ECCFP: A consecutive full pass-based bioinformatic analysis for eccDNA identification from long-read sequencing data. *iMetaOmics* e70080. https://doi.org/10.1002/imo2.70080
 
-- **Preprint (bioRxiv, 2025):** 
-> Zhang, T. et al. ECCFP: a consecutive full pass based bioinformatic analysis for eccDNA identification using Nanopore sequencing data. *bioRxiv* 2025.05.13.653627 (2025) doi:10.1101/2025.05.13.653627. https://www.biorxiv.org/content/10.1101/2025.05.13.653627v1

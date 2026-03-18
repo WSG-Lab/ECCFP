@@ -17,12 +17,6 @@ ECCFP is optimized from the [Flec](https://github.com/icebert/eccDNA_RCA_nanopor
 - [pyfastx](https://pypi.org/project/pyfastx/)
 - [Biopython](https://biopython.org)
 ## Installation
-<style>
-pre {
-   max-width: 800px;
-   overflow-x: auto;
-}
-</style>
 ```
 git clone https://github.com/WSG-Lab/ECCFP.git
 cd ECCFP

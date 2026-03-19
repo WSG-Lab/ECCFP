@@ -1,10 +1,10 @@
 # ECCFP - EccDNA Caller based on Consecutive Full Pass
 A software package for identifying eccDNAs in the ONT sequencing data of RCA-amplified eccDNA
 ## Introduction
-ECCFP utilizes all consecutive full passes to determine accurate eccDNA positions and generate consensus sequences, based on rolling circle amplification and nanopore sequencing.
+A new bioinformatics pipeline called ECCFP has been developed to improve the detection of extrachromosomal circular DNA (eccDNA) from long-read sequencing data. ECCFP uses all consecutive full passes from individual reads for candidate eccDNA identification and consolidates candidate eccDNAs to generate accurate unique eccDNA. To thoroughly evaluate the performance of ECCFP, 6 simulated datasets, 2 real sequencing datasets with spiked-in artificial synthesized eccDNAs and 29 publicly available real sequencing datasets, were applied. The results demonstrate that ECCFP markedly reduces the false positive rate, significantly increases the number of unique eccDNAs detection, achieves higher accuracy in identifying junction positions and circular consensus sequences, and also shortens the runtime, when compared to other three eccDNA analysis pipelines.
 [![ECCFP: ImetaOmics](https://img.shields.io/badge/DOI-10.1002/imo2.70080-blue)](https://doi.org/10.1002/imo2.70080)
-[![ECCFP: BioRxiv](https://img.shields.io/badge/DOI-10.1101/2025.05.13.653627-blue)](https://doi.org/10.1101/2025.05.13.653627)  
-|![ECCFP](./images/ECCFP%20Figure%201.png)|
+[![ECCFP: Bio-protocol](https://img.shields.io/badge/DOI-10.2176/BioProtoc.5636-blue)](https://doi.org/10.21769/BioProtoc.5636)  
+|![ECCFP](./images/Image.png)|
 |:---------------------------------------:|
 #### Reference
 ECCFP is optimized from the [Flec](https://github.com/icebert/eccDNA_RCA_nanopore.git) software.
@@ -112,4 +112,5 @@ Five files are generated following the completion of the pipeline: unit.txt and 
 ## Citation
 - **Primary publication (iMetaOmics, 2026):** 
 > Li, W., Miao, B., Zhang, J., Zeng, Q., Zhang, T., Wu, Z., Song, Y., Li, M., Guo, L., Luo, J., Xu, J., Liu, T., Chen, S., Gu, J. and Wan, S. (2026), ECCFP: A consecutive full pass-based bioinformatic analysis for eccDNA identification from long-read sequencing data. *iMetaOmics* e70080. https://doi.org/10.1002/imo2.70080
-
+- **Protocol (Bio-protocol, 2026):**
+> Li, W., Miao, B. and Wan, S. (2026). A Bioinformatics Workflow to Identify eccDNA Using ECCFP From Long-Read Nanopore Sequencing Data. *Bio-protocol* 16(6): e5636. DOI: 10.21769/BioProtoc.5636.
